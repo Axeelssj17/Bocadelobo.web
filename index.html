@@ -95,7 +95,7 @@
       to { opacity:1; transform: translateY(0); }
     }
 
-    /* ── CTA BUTTONS ── */
+    /* ── BOTONES ── */
     .cta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -139,7 +139,7 @@
     }
     .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-    /* ── SECTION TITLE ── */
+    /* ── SECTION TITULO ── */
     .section-label {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 0.8rem;
@@ -157,59 +157,35 @@
     section { padding: 80px 20px; }
     .section-inner { max-width: 1000px; margin: 0 auto; }
 
-    /* ── GALLERY ── */
-    .gallery-section { background: var(--charcoal); }
-    .gallery-tabs {
-      display: flex; gap: 8px; margin: 32px 0 20px;
-    }
+     /* ── GALERIA ── */
+    .gallery-section { background:var(--charcoal); }
+    .gallery-tabs { display:flex; gap:8px; margin:32px 0 20px; flex-wrap:wrap; }
     .tab-btn {
-      padding: 8px 20px; border-radius: 4px;
-      background: transparent; border: 1px solid var(--brown-light);
-      color: var(--cream-dark); cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
-      transition: all 0.2s;
+      padding:8px 20px; border-radius:4px;
+      background:transparent; border:1px solid rgb(232, 69, 10);
+      color:var(--cream-dark); cursor:pointer;
+      font-family:'DM Sans',sans-serif; font-size:0.85rem; font-weight:500;
+      transition:all 0.2s;
     }
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--orange); border-color: var(--orange); color: #fff;
-    }
+    .tab-btn.active, .tab-btn:hover { background:var(--green); border-color:var(--green); color:#fff; }
 
-    .tab-panel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 17px;
-      padding-bottom: 15px;
+    .tab-panel { display:none; }
+    .tab-panel.active {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
     }
-
-    .tab-panel img {
-      height: 600px;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    @media(min-width: 600px) {
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-      .gallery-grid .featured { grid-column: span 2; grid-row: span 2; }
-    }
-    .gallery-grid img {
-      width: 100%; height: 220px; object-fit: cover;
-      border-radius: 6px; display: block;
-      transition: transform 0.35s, filter 0.35s;
-    }
-    .gallery-grid .featured img { height: 100%; min-height: 300px; }
-    .gallery-grid > div:hover img { transform: scale(1.03); filter: brightness(1.1); }
-    .gallery-grid > div { overflow: hidden; border-radius: 6px; }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
     @media(min-width:600px) {
-      .tab-panel.active { grid-template-columns: repeat(3,1fr); }
-      .tab-panel.active .featured { grid-column: span 2; grid-row: span 2; }
+      .tab-panel.active { grid-template-columns:repeat(3,1fr); }
+      .tab-panel.active .featured { grid-column:span 2; grid-row:span 2; }
     }
+    .tab-panel > div { overflow:hidden; border-radius:8px; }
+    .tab-panel > div img {
+      width:100%; height:220px; object-fit:cover; display:block;
+      transition:transform 0.4s, filter 0.35s;
+    }
+    .tab-panel .featured img { height:100%; min-height:320px; }
+    .tab-panel > div:hover img { transform:scale(1.04); filter:brightness(1.08); }
 
     /* ── INFO ── */
     .info-section { background: var(--black); }
@@ -418,44 +394,47 @@
     <span class="section-label">PROMOS</span>
     <h2 class="section-title">DESAYUNOS Y MERIENDAS</h2>
 
-     <div id="tab-promos" class="tab-panel active">
-    <div>
-        <img src="IMAGENES/Promos.png" alt="Promociones">
-    </div>
+     <div id="tab-promos">
+        <div>
+          <img src="IMAGENES/Promos.png" alt="Promociones">
+        </div>
+      </div>
 </div>
 
 
 </section>
 
-<!-- GALLERY -->
+<!-- GALERIA -->
 <section class="gallery-section">
   <div class="section-inner">
     <span class="section-label">GALERÍA</span>
-    <h2 class="section-title">Nuestros Ambientes &amp; y Platos</h2>
-
+    <h2 class="section-title">Ambiente, Platos &amp; más</h2>
     <div class="gallery-tabs">
-      <button class="tab-btn active" onclick="switchTab('ambiente', this)">Nuestros locales</button>
-      <button class="tab-btn" onclick="switchTab('platos', this)">Platos</button>
+      <button class="tab-btn active" onclick="switchTab('ambiente',this)">Nuestros espacios</button>
+      <button class="tab-btn" onclick="switchTab('platos',this)">Platos</button>
     </div>
 
-
-
+    <!-- AMBIENTE -->
     <div id="tab-ambiente" class="tab-panel active">
-      <div class="Tab-panel img" style="grid-column: span 2; grid-row: span 2;">  
+      <div><img src="IMAGENES/Entrada2.png"></div>
         <div><img src="IMAGENES/Salon1.png"></div>
         <div><img src="IMAGENES/Salon2.png"></div>
+        <div><img src="IMAGENES/Salon3.png"></div>
         <div><img src="IMAGENES/EntradaF.png"></div>
-      </div>
+            
+    </div>
 
-    </div>
-    
+    <!-- PLATOS -->
     <div id="tab-platos" class="tab-panel">
-      <div class="Tab-panel img" style="grid-column: span 2; grid-row: span 2;">  
-        <div><img src="IMAGENES/Cortecarne.png"></div>
-        <div><img src="IMAGENES/Burger.png"></div>
-        <div><img src="IMAGENES/Postre.png"></div>
-      </div>  
-    </div>
+      <div><img src="IMAGENES/Carne.png"></div>
+      <div><img src="IMAGENES/Verdura.png"></div>
+      <div><img src="IMAGENES/Burger2.png"></div>
+      <div><img src="IMAGENES/Huevo.png"></div>
+      <div><img src="IMAGENES/Postre.png"></div>
+      <div><img src="IMAGENES/Carne2.png"></div>
+      <div><img src="IMAGENES/Parrilla.png"></div>
+      <div><img src="IMAGENES/Papas.png"></div>
+      <div><img src="IMAGENES/Cortecarne.png"></div>
 
   </div>
 </section>
